@@ -1,0 +1,65 @@
+/* header */
+.header{
+    background-color: #161b21;
+    color: white;
+    align-items: center;
+    z-index: 1;
+    margin: 0;
+    padding: 1%;
+    text-align: center;
+}
+/* trends */
+.trending-movies{
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.trend-movie-card{
+  display: inline-block;
+  text-align: center;
+  padding: 1%;
+}
+.trending-movies::-webkit-scrollbar {
+  width: 1em;
+}
+ 
+ 
+.trending-movies::-webkit-scrollbar-thumb {
+  background-color: brown;
+  border-radius: 15px;
+}
+
+/* modal */
+.modal{
+    position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.687);
+}
+
+.modal-main{
+    padding: 1%;
+    width:50%;
+    height:fit-content;
+    background-color: aliceblue;
+    position:absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%)
+}
+.trend-image{
+    width:100%;
+}
+.modal-bold{
+    color: brown;
+}
+
+.display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
