@@ -1,10 +1,16 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from "react";
 
 export default function Header() {
-    return (
-        <div className="header">
-            <h1>Movie-Cloud</h1>
-        </div>
-    )
+  return (
+    <div
+      className="header"
+    >
+      <img id="logo" src={require("../../images/logo.png")}/>
+      <h1>Moviotheca</h1>
+      <ul>
+        <li><a href="#">Search</a></li>
+        <li><a href="#trending">Trending</a></li>
+      </ul>
+    </div>
+  );
 }

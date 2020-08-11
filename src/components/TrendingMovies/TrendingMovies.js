@@ -14,18 +14,20 @@ export default function TrendingMovies() {
       )
       .then((res) => {
         setMovies(res.data.results);
-        // console.log(res.data.results);
+        console.log(res.data.results);
       });
   }, []);
 
   return (
-    <div className="trending-movies">
-      <h1>Today's Trending Movies</h1>
+    <div className="trendings">
+      <h1 id="trending-title">Today's Trending Movies</h1>
+    <div className="trending-movies" id="trending">
       {movies.length > 0 ? (
         movies.map((movie) => <TrendMovieItem key={movie.id} movie={movie} />)
-      ) : (
-        <h1>No Movie Found</h1>
-      )}
+        ) : (
+          <h1>No Movie Found</h1>
+          )}
+    </div>
     </div>
   );
 }

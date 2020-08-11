@@ -1,23 +1,59 @@
-*, body{
-  margin: 0
+*,
+body {
+  margin: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
+/* font-family: 'Acme', sans-serif; */
+/* font-family: "Lemonada", cursive; */
+
 /* header */
-.header{
-    background-color: #161b21;
-    color: white;
-    align-items: center;
-    z-index: 1;
-    margin: 0;
-    padding: 1%;
-    text-align: center;
+#logo {
+  width: 4%;
 }
+.header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  background-color: #111f4d;
+  color: #f2f4f7;
+  height: fit-content;
+  align-items: center;
+  font-family: "Acme", sans-serif;
+  z-index: 3;
+}
+.header ul {
+  display: flex;
+  list-style: none;
+}
+.header ul li {
+  margin: 0 5% 0 5%;
+}
+.header ul li a {
+  color: #f2f4f7;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+/* now playing */
+
 /* trends */
-.trending-movies{
+.trending-movies {
   overflow: auto;
   white-space: nowrap;
+  text-align: center;
+  margin: 0 0 5% 0;
+  width: 100%;
+  position: absolute;
+  font-family: 'Acme', sans-serif;
+}
+.trendings{
+  margin-top: 3%;
+  text-align: center;
+  font-family: "Lemonada", cursive;
 }
 
-.trend-movie-card{
+.trend-movie-card {
   display: inline-block;
   text-align: center;
   padding: 1%;
@@ -25,44 +61,77 @@
 .trending-movies::-webkit-scrollbar {
   width: 1em;
 }
- 
- 
+
 .trending-movies::-webkit-scrollbar-thumb {
-  background-color: #161b21;
+  background-color: #111f4d;
   border-radius: 15px;
 }
 
-/* modal */
-.modal{
-    position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.687);
+/* Movie */
+.container{
+  width: 75%;
+  position: absolute;
+  left: 50%;
+  top:10%;
+  transform: translate(-50%, 0);
+}
+.movie-image{
+  width: 100%;
+  border-radius: 50px;
+}
+.movie-title{
+  font-family: 'Acme', sans-serif;
+  font-size: 2rem;
+  margin: 2% 0 2% 0;
+  border-bottom: 3px solid #111f4d;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.home-page-link{
+  background-color: #111f4d;
+    color: #f2f4f7;
+    padding: 10%;
+    border-radius: 18%;
+    text-decoration: none;
+    margin-left: 50%;
+}
+.release-date, .movie-overview, .movie-average, .genres, .cast-title, .review-title{
+  font-size: 2rem;
+  margin: 2% 0 2% 0;
+  font-family: 'Acme', sans-serif;
+}
+.container span{
+  color: #e43a19
+}
+.actor-image{
+  width: 100%;
+}
+.actor-name{
+  margin: 2% 0 2% 0;
+  font-family: 'Acme', sans-serif;
+  border-bottom: 3px solid #e43a19;
+  width: max-content;
+}
+.cast{
+  margin-bottom: 5%;
+  border-bottom: 3px solid #e43a19;
 }
 
-.modal-main{
-    padding: 1%;
-    width:50%;
-    height:fit-content;
-    background-color: aliceblue;
-    position:absolute;
-    left: 50%;
-    top:50%;
-    transform: translate(-50%, -50%)
+.movie-trailer{
+  position: relative;
+  width: 100%;
 }
-.trend-image{
-    width:100%;
-}
-.modal-bold{
-    color: brown;
+iframe{
+  border-radius: 1rem;
 }
 
-.display-block {
-    display: block;
-  }
-  
-  .display-none {
-    display: none;
-  }
+.review{
+  background-color: #111f4d;
+  padding: 3%;
+  color: #f2f4f7;
+  font-size: 1.3rem;
+  margin: 2% 0 2% 0;
+  border-radius: 2rem;
+  font-family: 'Acme', sans-serif;
+}
