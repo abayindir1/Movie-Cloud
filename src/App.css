@@ -96,6 +96,10 @@ html {
     text-decoration: none;
     margin-left: 50%;
 }
+.home-page-link:hover{
+  background-color: #e43a19;
+  color: #111f4d;
+}
 .release-date, .movie-overview, .movie-average, .genres, .cast-title, .review-title{
   font-size: 2rem;
   margin: 2% 0 2% 0;
@@ -105,8 +109,12 @@ html {
   color: #e43a19
 }
 .actor-image{
-  width: 100%;
+  width: 60%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
+
 .actor-name{
   margin: 2% 0 2% 0;
   font-family: 'Acme', sans-serif;
@@ -134,4 +142,62 @@ iframe{
   margin: 2% 0 2% 0;
   border-radius: 2rem;
   font-family: 'Acme', sans-serif;
+}
+.review-link{
+  color:#e43a19;
+  text-decoration: none;
+  background-color: #f2f4f7;
+    padding: 1%;
+    border-radius: 16px;
+}
+.review-link:hover{
+  color:#f2f4f7;
+  background-color: #e43a19;
+}
+
+.similar-title{
+  font-size: 2rem;
+  color: #e43a19;
+  margin: 3% 0 1% 0;
+  font-family: 'Acme', sans-serif;
+}
+.similar-movie-list{
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  margin: 0% 0 5% 0;
+}
+
+/* movie item */
+.trend-movie-card{
+  border: 3px solid #e43a19;
+  margin: 1%;
+  width: fit-content;
+  border-radius: 1rem;
+  background-color: #111f4d;
+  color: #f2f4f7;
+  font-size: 1.1rem;
+  font-family: 'Acme', sans-serif;
+}
+.trend-movie-card h4{
+  margin-bottom: 10%;
+}
+.movie-card-image{
+  border-radius: 1rem;
+}
+
+.btn{
+  text-decoration: none;
+  background-color: #f2f4f7;
+  padding: 3%;
+  color: #e43a19;
+  border-radius: 3rem;
+}
+.btn:hover{
+  color: #f2f4f7;
+  background-color: #e43a19;
+  padding: 5%;
 }

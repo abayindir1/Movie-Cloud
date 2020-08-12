@@ -3,12 +3,18 @@ import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import TrendMovieItem from "../TrendingMovies/TrendMovieItem";
 
 export default function MovieInfo(props) {
+  // const {match, }
+
   const [movie, setMovie] = React.useState([]);
   const [video, setVideo] = React.useState("");
   const [cast, setCast] = React.useState([]);
   const [reviews, setReviews] = React.useState([]);
+  const [similar, setSimilar] = React.useState([]);
+
+  const movieId = props.match.params.id;
 
   var settings = {
     dots: true,
@@ -19,19 +25,21 @@ export default function MovieInfo(props) {
   };
 
   React.useEffect(() => {
+    window.scrollTo(0, 0)
     getMovie();
     getVideo();
     getCast();
     getReviews();
+    getSimilar();
     // console.log(props);
-  }, []);
+  },[movieId, window.location.pathname]);
 
   // api calls
   const getMovie = () => {
     axios
       .get(
         "https://api.themoviedb.org/3/movie/" +
-          props.match.params.id +
+          movieId +
           "?api_key=" +
           process.env.REACT_APP_API_KEY +
           "&language=en-US"
@@ -45,7 +53,7 @@ export default function MovieInfo(props) {
     axios
       .get(
         "https://api.themoviedb.org/3/movie/" +
-          props.match.params.id +
+          movieId +
           "/videos?api_key=" +
           process.env.REACT_APP_API_KEY +
           "&language=en-US"
@@ -61,12 +69,15 @@ export default function MovieInfo(props) {
     axios
       .get(
         "https://api.themoviedb.org/3/movie/" +
-          props.match.params.id +
+          movieId +
           "/credits?api_key=" +
           process.env.REACT_APP_API_KEY
       )
       .then((response) => {
-        setCast(response.data.cast);
+        var items = response.data.cast.slice(0, 12).map((item) => {
+          return item;
+        });
+        setCast(items);
         // console.log(response.data.cast);
       });
   };
@@ -75,13 +86,31 @@ export default function MovieInfo(props) {
     axios
       .get(
         "https://api.themoviedb.org/3/movie/" +
-          props.match.params.id +
+          movieId +
           "/reviews?api_key=" +
           process.env.REACT_APP_API_KEY +
           "&language=en-US&page=1"
       )
       .then((response) => {
         setReviews(response.data.results);
+        // console.log(response.data.results);
+      });
+  };
+
+  const getSimilar = () => {
+    axios
+      .get(
+        "https://api.themoviedb.org/3/movie/" +
+          movieId +
+          "/similar?api_key=" +
+          process.env.REACT_APP_API_KEY +
+          "&language=en-US&page=1"
+      )
+      .then((res) => {
+        var items = res.data.results.slice(0, 10).map((item) => {
+          return item;
+        });
+        setSimilar(items);
       });
   };
   return (
@@ -90,27 +119,33 @@ export default function MovieInfo(props) {
         <section>
           {movie.backdrop_path ? (
             <img
-            src={"https://image.tmdb.org/t/p/original/" + movie.backdrop_path}
-            className="movie-image"
-          ></img>
-          ):(<img
-            src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}
-            style={{
-              width: "45%",
-              position:"relative",
-              left:"50%",
-              transform: "translate(-50%, 0)"
-            }}
-          ></img>)}
-          <div className="movie-title">
+              src={"https://image.tmdb.org/t/p/original/" + movie.backdrop_path}
+              className="movie-image"
+            ></img>
+          ) : (
+            <img
+              src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}
+              style={{
+                width: "45%",
+                position: "relative",
+                left: "50%",
+                transform: "translate(-50%, 0)",
+              }}
+            ></img>
+          )}
+          <div className="movie-title" id="info">
             <h1>{movie.original_title}</h1>
             {movie.homepage && (
-                <p>
-                  <a className="home-page-link" href={movie.homepage} target="_blank">
-                    Visit
-                  </a>
-                </p>
-              )}
+              <p>
+                <a
+                  className="home-page-link"
+                  href={movie.homepage}
+                  target="_blank"
+                >
+                  Visit
+                </a>
+              </p>
+            )}
           </div>
           <div>
             <section>
@@ -124,17 +159,21 @@ export default function MovieInfo(props) {
                 <span>Average Vote:</span> {movie.vote_average}/10
               </p>
               <div className="genres">
-                <h3><span>Genres:</span></h3>
-              <ul>
-                {movie.genres &&
-                  movie.genres.map((genre) => (
-                    <li key={genre.id}>{genre.name}</li>
+                <h3>
+                  <span>Genres:</span>
+                </h3>
+                <ul>
+                  {movie.genres &&
+                    movie.genres.map((genre) => (
+                      <li key={genre.id}>{genre.name}</li>
                     ))}
-              </ul>
-                    </div>
+                </ul>
+              </div>
               {cast && (
                 <div className="cast" style={{ cursor: "grab" }}>
-                  <h1 className="cast-title"><span>Cast:</span></h1>
+                  <h1 className="cast-title">
+                    <span>Cast:</span>
+                  </h1>
                   <Slider {...settings}>
                     {cast.map((actor) => (
                       <div
@@ -153,7 +192,7 @@ export default function MovieInfo(props) {
                           ></img>
                         ) : (
                           <img
-                          className="actor-image"
+                            className="actor-image"
                             src={require("../../images/stock-actor.png")}
                           ></img>
                         )}
@@ -162,33 +201,56 @@ export default function MovieInfo(props) {
                   </Slider>
                 </div>
               )}
-
-              
             </section>
           </div>
-          <div className="movie-trailer">
-          <iframe
-            width="100%"
-            height="800"
-            src={`https://www.youtube.com/embed/${video.key}`}
+          <div className="movie-trailer" id="trailer">
+            <iframe
+              width="100%"
+              height="800"
+              src={`https://www.youtube.com/embed/${video.key}`}
             ></iframe>
-            </div>
+          </div>
 
-            <div className="movie-reviews">
-              <h1 className="review-title"><span>Reviews: </span></h1>
-              {reviews.length>0 ?(
-                reviews.map(review =>
-                  <div key={review.id} className="review"> 
-                <h3><span>Author:</span> {review.author}</h3>
-                <p>{review.content}</p>
+          <div className="movie-reviews" id="reviews">
+            <h1 className="review-title">
+              <span>Reviews: </span>
+            </h1>
+            {reviews.length > 0 ? (
+              reviews.map((review) => (
+                <div key={review.id} className="review">
+                  <h3>
+                    <span>Author:</span> {review.author}
+                  </h3>
+                  <p>
+                    {review.content.length > 300
+                      ? review.content.substring(0, 300) + "..."
+                      : review.content}
+                  </p>
+                  <br />
+                  <a className="review-link" href={review.url} target="_blank">
+                    Read full review
+                  </a>
                 </div>
-                )
-              ):(
-                <div className="review">
-                  <h1>No Review Found</h1>
-                </div>
+              ))
+            ) : (
+              <div className="review">
+                <h1>No Review Found</h1>
+              </div>
+            )}
+          </div>
+
+          <div className="similar-movies" id="similar">
+            <h1 className="similar-title">Similar Movies:</h1>
+            <div className="similar-movie-list">
+              {similar.length > 0 ? (
+                similar.map((movie) => (
+                  <TrendMovieItem key={movie.id} movie={movie} />
+                ))
+              ) : (
+                <h1>No Similar Movie Found</h1>
               )}
             </div>
+          </div>
         </section>
       </div>
     </>
