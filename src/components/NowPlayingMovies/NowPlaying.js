@@ -53,7 +53,6 @@ export default function NowPlaying() {
               <NowPlayindItem key={movie.id} movie={movie}/>
               ))}
           </Slider>
-          <TrendingMovies/>
               </>
       ) : (
         <h1>No Movie Found</h1>

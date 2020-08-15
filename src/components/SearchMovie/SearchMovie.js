@@ -1,17 +1,13 @@
 import React from "react";
 import axios from "axios";
-import SearchMovieItem from "./SearchMovieItem";
+import TrendMovieItem from "../TrendingMovies/TrendMovieItem"
 
 export default function SearchMovie() {
   const [search, setSearch] = React.useState("");
   const [movies, setMovies] = React.useState([]);
-  const [recomendations, setRecomendations] = React.useState([]);
+  // const [recomendations, setRecomendations] = React.useState([]);
 
-  // React.useEffect(() => {
-  //   if(movies.length > 5 ){
-  //       movies.slice(0, 4)
-  //   }
-  // });
+ 
 
   const onChange = (e) => {
     e.preventDefault();
@@ -25,25 +21,9 @@ export default function SearchMovie() {
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}`
       )
       .then((res) => {
-        var items = res.data.results.slice(0, 3).map((item) => {
+        var items = res.data.results.slice(0, 6).map((item) => {
           return item;
         });
-        if (items.length > 0) {
-          for (var i = 0; i < items.length; i++) {
-            axios
-              .get(
-                `https://api.themoviedb.org/3/movie/${items[i].id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
-              )
-              .then((response) => {
-                var recomendations = response.data.results
-                  .slice(0, 10)
-                  .map((movie) => {
-                    return movie;
-                  });
-                setRecomendations(recomendations);
-              });
-          }
-        }
         setMovies(items);
       });
 
@@ -51,8 +31,9 @@ export default function SearchMovie() {
   };
 
   return (
-    <div>
+    <div className="search" id="search">
       <div className="form-group">
+        <form onSubmit={(e)=>onSubmit(e)} className="search-form">
         <input
           type="search"
           placeholder="Search for a movie"
@@ -60,22 +41,14 @@ export default function SearchMovie() {
           value={search}
           onChange={(e) => onChange(e)}
           required
-        />
-        <button onClick={(e) => onSubmit(e)}>Search</button>
+          />
+        <button onClick={(e) => onSubmit(e)} className="search-btn">Search</button>
+          </form>
       </div>
       <div className="search-result">
         {movies.length > 0 &&
           movies.map((movie) => (
-            // console.log(movie)
-            <SearchMovieItem
-              key={movie.id}
-              title={movie.original_title}
-              overview={movie.overview}
-              popularity={movie.popularity}
-              release_date={movie.release_date}
-              poster={movie.poster_path}
-              recomendations={recomendations}
-            />
+            <TrendMovieItem key={movie.id} movie={movie}/>
           ))}
       </div>
     </div>

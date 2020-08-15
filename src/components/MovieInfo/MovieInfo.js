@@ -13,6 +13,7 @@ export default function MovieInfo(props) {
   const [cast, setCast] = React.useState([]);
   const [reviews, setReviews] = React.useState([]);
   const [similar, setSimilar] = React.useState([]);
+  const [reloaded, setReloaded] = React.useState(false);
 
   const movieId = props.match.params.id;
 
@@ -31,8 +32,9 @@ export default function MovieInfo(props) {
     getCast();
     getReviews();
     getSimilar();
-    // console.log(props);
-  },[movieId, window.location.pathname]);
+    
+  },[movieId, window.location.pathname,]);
+
 
   // api calls
   const getMovie = () => {
@@ -204,11 +206,13 @@ export default function MovieInfo(props) {
             </section>
           </div>
           <div className="movie-trailer" id="trailer">
-            <iframe
+            {!video ? (
+              <h1>No Trailer Found</h1>
+            ):(<iframe
               width="100%"
               height="800"
               src={`https://www.youtube.com/embed/${video.key}`}
-            ></iframe>
+            ></iframe>)}
           </div>
 
           <div className="movie-reviews" id="reviews">
@@ -247,7 +251,7 @@ export default function MovieInfo(props) {
                   <TrendMovieItem key={movie.id} movie={movie} />
                 ))
               ) : (
-                <h1>No Similar Movie Found</h1>
+                <h1 className="no-similar">No Similar Movie Found</h1>
               )}
             </div>
           </div>

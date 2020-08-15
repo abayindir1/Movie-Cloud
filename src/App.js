@@ -3,19 +3,16 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from "./components/Header/Header";
-import TrendingMovies from "./components/TrendingMovies/TrendingMovies";
-import SearchMovie from "./components/SearchMovie/SearchMovie";
-import NowPlaying from "./components/NowPlayingMovies/NowPlaying";
-import MovieInfo from "./components/MovieInfo/MovieInfo"
+import MovieInfo from "./components/MovieInfo/MovieInfo";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
     <Router>
       <Header />
       <Switch>
-            <Route exact path="/" component={NowPlaying} />
-            {/* <Route exact path="/" component={TrendingMovies} /> */}
-          </Switch>
+        <Route exact path="/" component={Home} />
+      </Switch>
       <Switch>
         <Route exact path="/movie/:id" component={MovieInfo} />
       </Switch>

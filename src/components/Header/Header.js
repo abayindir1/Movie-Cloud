@@ -1,8 +1,15 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 export default function Header() {
+  const [ifRoute, setIfRoute] = React.useState(null)
+
   React.useEffect(() => {
-    console.log(window.location.pathname)
+    if(window.location.pathname === "/"){
+      setIfRoute(true)
+    }else{
+      setIfRoute(false)
+    }
   },[]);
   // const movieId = props.match.params.id;
 
@@ -11,10 +18,12 @@ export default function Header() {
       className="header"
     >
       <img id="logo" src={require("../../images/logo.png")}/>
+      <Link to="/" id="page-title">
       <h1>Moviotheca</h1>
-        {window.location.pathname === "/" ? (
-      <ul>
-          <li><a href="#">Search</a></li>
+      </Link>
+        {ifRoute ? (
+          <ul>
+          <li><a href="#search">Search</a></li>
           <li><a href="#trending">Trending</a></li>
       </ul>
         ):(
