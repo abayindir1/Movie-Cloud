@@ -1,0 +1,124 @@
+.container {
+  width: 75%;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, 0);
+  color: #eeeeee;  
+  font-family: 'Viga', sans-serif; 
+}
+
+.movie-image {
+  width: 100%;
+  border-radius: 50px;
+}
+.movie-title {
+  font-family: "Acme", sans-serif;
+  font-size: 2rem;
+  margin: 2% 0 2% 0;
+  border-bottom: 3px solid #303841;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Viga', sans-serif; 
+}
+.home-page-link {
+  background-color: #303841;
+  color: #eeeeee;
+  padding: 10%;
+  border-radius: 18%;
+  text-decoration: none;
+  margin-left: 50%;
+}
+.home-page-link:hover {
+  background-color: #d72323;
+  color: #303841;
+}
+.release-date,
+.movie-overview,
+.movie-average,
+.genres,
+.cast-title,
+.review-title {
+  font-size: 2rem;
+  margin: 2% 0 2% 0;
+  font-family: 'Viga', sans-serif; 
+}
+.container span {
+  color: #d72323;
+}
+.actor-image {
+  width: 60%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.actor-name {
+  margin: 2% 0 2% 0;
+  font-family: 'Alata', sans-serif;
+  border-bottom: 3px solid #d72323;
+  width: max-content;
+}
+.cast {
+  margin-bottom: 5%;
+  border-bottom: 3px solid #d72323;
+}
+
+.movie-trailer {
+  position: relative;
+  width: 100%;
+}
+iframe {
+  border-radius: 1rem;
+}
+
+.review {
+  background-color: #303841;
+  padding: 3%;
+  color: #eeeeee;
+  font-size: 1.3rem;
+  margin: 2% 0 2% 0;
+  border-radius: 2rem;
+  font-family: 'Alata', sans-serif;
+  border-left: 3px solid #d72323;
+}
+.review-link {
+  color: #d72323;
+  text-decoration: none;
+  background-color: #eeeeee;
+  padding: 1%;
+  border-radius: 16px;
+}
+.review-link:hover {
+  color: #eeeeee;
+  background-color: #d72323;
+}
+
+.similar-title {
+  font-size: 2rem;
+  color: #d72323;
+  margin: 3% 0 1% 0;
+  font-family: 'Alata', sans-serif;
+}
+.similar-movie-list {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  margin: 0% 0 5% 0;
+}
+
+.no-similar {
+  background-color: #303841;
+  padding: 3%;
+  color: #eeeeee;
+  font-size: 2rem;
+  margin: 2% 0 2% 0;
+  border-radius: 2rem;
+  font-family: 'Alata', sans-serif;
+  width: 100%;
+  border-left: 3px solid #d72323;
+}

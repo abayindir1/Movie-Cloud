@@ -2,7 +2,10 @@ import React from "react";
 import axios from "axios";
 import TrendMovieItem from "../TrendingMovies/TrendMovieItem";
 import Header from "../Header/Header";
-import "./MovieInfo.css"
+import "./MovieInfo.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 export default function MovieInfo(props) {
   // const {match, }
@@ -15,17 +18,49 @@ export default function MovieInfo(props) {
 
   const movieId = props.match.params.id;
 
-
   React.useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     getMovie();
     getVideo();
     getCast();
     getReviews();
     getSimilar();
-    
-  },[movieId, window.location.pathname,]);
+  }, [movieId, window.location.pathname]);
 
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   // api calls
   const getMovie = () => {
@@ -108,7 +143,7 @@ export default function MovieInfo(props) {
   };
   return (
     <>
-    <Header/>
+      <Header />
       <div className="container">
         <section>
           {movie.backdrop_path ? (
@@ -168,6 +203,7 @@ export default function MovieInfo(props) {
                   <h1 className="cast-title">
                     <span>Cast:</span>
                   </h1>
+                  <Slider {...settings}>
                     {cast.map((actor) => (
                       <div
                         key={actor.id}
@@ -191,6 +227,7 @@ export default function MovieInfo(props) {
                         )}
                       </div>
                     ))}
+                  </Slider>
                 </div>
               )}
             </section>
@@ -198,11 +235,13 @@ export default function MovieInfo(props) {
           <div className="movie-trailer" id="trailer">
             {!video ? (
               <h1>No Trailer Found</h1>
-            ):(<iframe
-              width="100%"
-              height="800"
-              src={`https://www.youtube.com/embed/${video.key}`}
-            ></iframe>)}
+            ) : (
+              <iframe
+                width="100%"
+                height="800"
+                src={`https://www.youtube.com/embed/${video.key}`}
+              ></iframe>
+            )}
           </div>
 
           <div className="movie-reviews" id="reviews">
