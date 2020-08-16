@@ -1,14 +1,15 @@
-import React from 'react'
-import NowPlaying from '../NowPlayingMovies/NowPlaying'
-import TrendingMovies from '../TrendingMovies/TrendingMovies'
-import SearchMovie from '../SearchMovie/SearchMovie'
+import React from "react";
+import TrendingMovies from "../TrendingMovies/TrendingMovies";
+import SearchMovie from "../SearchMovie/SearchMovie";
+import Header from "../Header/Header";
 
 export default function Home() {
-    return (
-        <div>
-            <NowPlaying/>
-            <SearchMovie/>
-            <TrendingMovies/>
-        </div>
-    )
+  return (
+    <div>
+      <Header />
+      <div className="landing"></div>
+      <SearchMovie />
+      <TrendingMovies/>
+    </div>
+  );
 }

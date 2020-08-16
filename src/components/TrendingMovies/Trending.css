@@ -1,0 +1,36 @@
+.trending-movies {
+  overflow: auto;
+  white-space: nowrap;
+  text-align: center;
+  margin: 0 0 5% 0;
+  width: 100%;
+  position: absolute;
+  font-family: 'Viga', sans-serif;
+}
+.trendings{
+  margin-top: 3%;
+  text-align: center;
+  font-family: 'Alata', sans-serif;
+  background-color: #303841;
+}
+
+.trend-movie-card {
+  display: inline-block;
+  text-align: center;
+  padding: 1%;
+  margin: 1% 1% 2% 1%;
+}
+.trending-movies::-webkit-scrollbar {
+  width: 2em;
+  cursor: grab;
+}
+
+.trending-movies::-webkit-scrollbar-thumb {
+  background-color: #e43a19;
+  border-radius: 15px;
+} 
+
+.btn{
+    color: #eeeeee;
+    text-decoration: none;
+}

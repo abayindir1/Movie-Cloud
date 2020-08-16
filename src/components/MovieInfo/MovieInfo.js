@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import TrendMovieItem from "../TrendingMovies/TrendMovieItem";
+import Header from "../Header/Header";
+import "./MovieInfo.css"
 
 export default function MovieInfo(props) {
   // const {match, }
@@ -13,17 +12,9 @@ export default function MovieInfo(props) {
   const [cast, setCast] = React.useState([]);
   const [reviews, setReviews] = React.useState([]);
   const [similar, setSimilar] = React.useState([]);
-  const [reloaded, setReloaded] = React.useState(false);
 
   const movieId = props.match.params.id;
 
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-  };
 
   React.useEffect(() => {
     window.scrollTo(0, 0)
@@ -117,6 +108,7 @@ export default function MovieInfo(props) {
   };
   return (
     <>
+    <Header/>
       <div className="container">
         <section>
           {movie.backdrop_path ? (
@@ -176,7 +168,6 @@ export default function MovieInfo(props) {
                   <h1 className="cast-title">
                     <span>Cast:</span>
                   </h1>
-                  <Slider {...settings}>
                     {cast.map((actor) => (
                       <div
                         key={actor.id}
@@ -200,7 +191,6 @@ export default function MovieInfo(props) {
                         )}
                       </div>
                     ))}
-                  </Slider>
                 </div>
               )}
             </section>

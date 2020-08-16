@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import TrendMovieItem from "../TrendingMovies/TrendMovieItem"
+import "./Search.css"
 
 export default function SearchMovie() {
   const [search, setSearch] = React.useState("");

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TrendMovieItem from "./TrendMovieItem";
+import "./Trending.css"
 
 
 export default function TrendingMovies() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
+    getTrending()
+  }, []);
+
+  const getTrending =()=>{
     axios
       .get(
         "https://api.themoviedb.org/3/trending/movie/day?api_key=" +
@@ -16,8 +21,7 @@ export default function TrendingMovies() {
         setMovies(res.data.results);
         console.log(res.data.results);
       });
-  }, []);
-
+  }
   return (
     <div className="trendings">
       <h1 id="trending-title">Today's Trending Movies</h1>

@@ -1,0 +1,37 @@
+#logo {
+  width: 4%;
+}
+.header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  background-color: #303841;
+  height: fit-content;
+  align-items: center;
+  font-family: "Viga", sans-serif;
+  z-index: 3;
+}
+#page-title {
+  text-decoration: none;
+  color: #eeeeee;
+}
+.header ul {
+  display: flex;
+  list-style: none;
+  width: 30%;
+}
+.header ul li {
+  margin: 0 2% 0 2%;
+  
+}
+.header ul li a {
+  color: #eeeeee;
+  text-decoration: none;
+  font-size: 1.3rem;
+  border-top: 2px solid #d72323;
+}
+.header ul li a:hover {
+    border-bottom: 2px solid #d72323;
+    transition: 0.75s;
+    color: #d72323;
+}

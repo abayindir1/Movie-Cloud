@@ -1,17 +1,23 @@
 import React from "react";
 import {Link} from "react-router-dom"
+import "./Header.css"
 
 export default function Header() {
-  const [ifRoute, setIfRoute] = React.useState(null)
+  const [currentPath, setCurrentPath] = React.useState(window.location.pathname)
+  const [ifRoute, setIfRoute] = React.useState(currentPath==="/")
 
   React.useEffect(() => {
-    if(window.location.pathname === "/"){
+    changeNav()
+  },[ifRoute]);
+
+  const changeNav =()=>{
+    if(currentPath === "/"){
       setIfRoute(true)
     }else{
       setIfRoute(false)
     }
-  },[]);
-  // const movieId = props.match.params.id;
+    
+  }
 
   return (
     <div
@@ -28,7 +34,7 @@ export default function Header() {
       </ul>
         ):(
           <ul>
-          <li><a href="#info">Movie Info</a></li>
+          <li><a href="#info">Overview</a></li>
           <li><a href="#trailer">Trailer</a></li>
           <li><a href="#reviews">Reviews</a></li>
           <li><a href="#similar">Similar Movies</a></li>
