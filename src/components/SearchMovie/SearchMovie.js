@@ -33,6 +33,7 @@ export default function SearchMovie() {
 
   return (
     <div className="search" id="search">
+      <h1 className="search-title">Search</h1>
       <div className="form-group">
         <form onSubmit={(e)=>onSubmit(e)} className="search-form">
         <input

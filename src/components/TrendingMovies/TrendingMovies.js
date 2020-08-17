@@ -61,9 +61,9 @@ export default function TrendingMovies() {
     ]
   };
   return (
-    <div className="trendings">
-      <h1 id="trending-title">Today's Trending Movies</h1>
-    <div className="trending-movies" id="trending">
+    <div  className="movie-list" id="trendings">
+      <h1 id="trending-title" className="title">Today's Trending Movies</h1>
+    <div className="movies" id="trending">
     <Slider {...settings}>
       {movies.length > 0 ? (
         movies.map((movie) => <TrendMovieItem key={movie.id} movie={movie} />)

@@ -31,6 +31,8 @@ export default function Header() {
           <ul>
           <li><a href="#search">Search</a></li>
           <li><a href="#trending">Trending</a></li>
+          <li><a href="#now-playing">Now Playing</a></li>
+          <li><a href="#top-rated">Top Rated</a></li>
       </ul>
         ):(
           <ul>
