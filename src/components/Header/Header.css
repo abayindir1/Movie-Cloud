@@ -1,5 +1,5 @@
 #logo {
-  width: 4%;
+  width: 5%;
 }
 .header {
   position: fixed;
@@ -18,7 +18,7 @@
 .header ul {
   display: flex;
   list-style: none;
-  width: 30%;
+  width: 100%;
 }
 .header ul li {
   margin: 0 2% 0 2%;
@@ -27,11 +27,42 @@
 .header ul li a {
   color: #eeeeee;
   text-decoration: none;
-  font-size: 1.3rem;
+  font-size: 25px;
   border-top: 2px solid #d72323;
 }
 .header ul li a:hover {
     border-bottom: 2px solid #d72323;
     transition: 0.75s;
     color: #d72323;
+}
+/* Responsive */
+@media screen and (max-width: 920px) {
+  #page-title{
+    font-size: 15px;
+  }
+  .header ul li a{
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .header{
+    display: grid;
+    align-items: baseline;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    width: 100%;
+  }
+  .header ul {
+    margin: 0 auto;
+    width: 77%;
+  }
+  #logo {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  #page-title{
+    font-size: 10px;
+  }
 }
