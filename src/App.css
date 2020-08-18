@@ -12,7 +12,7 @@ html {
   background-image: url("./images/landing.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   text-align: center;
   box-shadow: 5px 10px 18px #303841;
   width: 100%;
@@ -20,4 +20,8 @@ html {
 /* font-family: 'Alata', sans-serif;
 font-family: 'Viga', sans-serif; */
 
-
+@media screen and (max-width: 920px) {
+  .landing{
+    height: 75vh;
+  }
+}

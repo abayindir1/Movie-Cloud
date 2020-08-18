@@ -19,13 +19,13 @@ export default function TopRated() {
         })
     }
     var settings = {
-        dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 5,
-        initialSlide: 0,
-        rtl: true,
+      // dots: true,
+      infinite: true,
+    speed: 800,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 0,
+    rtl: true,
         responsive: [
           {
             breakpoint: 1024,

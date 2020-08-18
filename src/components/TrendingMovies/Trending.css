@@ -22,7 +22,7 @@
   padding: 2%;
   margin: 1% 1% 2% 1%;
   align-items: center;
-  max-width: 200px;
+  width: 200px;
   opacity: 0.4;
   transition: 0.75s;
 }
@@ -31,6 +31,7 @@
 }
 .movie-card-image {
   border-radius: 3rem;
+  width: 200px;
 }
 .card-link {
   color: #eeeeee;
@@ -40,4 +41,27 @@
   margin-top: 10%;
 }
 
+/* mediaq */
+@media screen and (max-width: 920px) {
+  .trend-movie-card{
+    width: 100px;
+  }
+  .movie-card-image {
+    width: 100px;
+  }
+  .movie-list{
+    font-size: 13px
+  }
+}
 
+@media screen and (max-width: 650px) {
+  .trend-movie-card{
+    width: 75px;
+  }
+  .movie-card-image {
+    width: 75px;
+  }
+  .movie-list{
+    font-size: 10px
+  }
+}

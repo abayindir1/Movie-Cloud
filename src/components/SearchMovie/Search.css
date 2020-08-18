@@ -112,3 +112,15 @@
     transform: scale(1);
   }
 }
+
+/* mediaq */
+@media screen and (max-width: 920px) {
+  .search-form input{
+    width: 75%;
+    font-size: 13px;
+    margin-bottom: 4%;
+  }
+  .search{
+    font-size: 13px;
+  }
+}

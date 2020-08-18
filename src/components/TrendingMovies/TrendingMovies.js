@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TrendMovieItem from "./TrendMovieItem";
-import "./Trending.css"
+import "./Trending.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
 
 export default function TrendingMovies() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    getTrending()
+    getTrending();
   }, []);
 
-  const getTrending =()=>{
+  const getTrending = () => {
     axios
       .get(
         "https://api.themoviedb.org/3/trending/movie/day?api_key=" +
@@ -24,11 +23,11 @@ export default function TrendingMovies() {
         setMovies(res.data.results);
         console.log(res.data.results);
       });
-  }
+  };
   var settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
+    // dots: true,
+    infinite: true,
+    speed: 800,
     slidesToShow: 5,
     slidesToScroll: 5,
     initialSlide: 0,
@@ -40,38 +39,42 @@ export default function TrendingMovies() {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
-    <div  className="movie-list" id="trendings">
-      <h1 id="trending-title" className="title">Today's Trending Movies</h1>
-    <div className="movies" id="trending">
-    <Slider {...settings}>
-      {movies.length > 0 ? (
-        movies.map((movie) => <TrendMovieItem key={movie.id} movie={movie} />)
-        ) : (
-          <h1>No Movie Found</h1>
+    <div className="movie-list" id="trendings">
+      <h1 id="trending-title" className="title">
+        Today's Trending Movies
+      </h1>
+      <div className="movies" id="trending">
+        <Slider {...settings}>
+          {movies.length > 0 ? (
+            movies.map((movie) => (
+              <TrendMovieItem key={movie.id} movie={movie} />
+            ))
+          ) : (
+            <h1>No Movie Found</h1>
           )}
-          </Slider>
-    </div>
+        </Slider>
+      </div>
     </div>
   );
 }
