@@ -68,7 +68,7 @@ export default function MovieInfo(props) {
         "https://api.themoviedb.org/3/movie/" +
           movieId +
           "?api_key=" +
-          process.env.REACT_APP_API_KEY +
+          REACT_APP_API_KEY +
           "&language=en-US"
       )
       .then((res) => {
@@ -82,7 +82,7 @@ export default function MovieInfo(props) {
         "https://api.themoviedb.org/3/movie/" +
           movieId +
           "/videos?api_key=" +
-          process.env.REACT_APP_API_KEY +
+          REACT_APP_API_KEY +
           "&language=en-US"
       )
       .then((response) => {
@@ -98,7 +98,7 @@ export default function MovieInfo(props) {
         "https://api.themoviedb.org/3/movie/" +
           movieId +
           "/credits?api_key=" +
-          process.env.REACT_APP_API_KEY
+          REACT_APP_API_KEY
       )
       .then((response) => {
         var items = response.data.cast.slice(0, 12).map((item) => {
@@ -115,7 +115,7 @@ export default function MovieInfo(props) {
         "https://api.themoviedb.org/3/movie/" +
           movieId +
           "/reviews?api_key=" +
-          process.env.REACT_APP_API_KEY +
+          REACT_APP_API_KEY +
           "&language=en-US&page=1"
       )
       .then((response) => {
@@ -130,7 +130,7 @@ export default function MovieInfo(props) {
         "https://api.themoviedb.org/3/movie/" +
           movieId +
           "/similar?api_key=" +
-          process.env.REACT_APP_API_KEY +
+          REACT_APP_API_KEY +
           "&language=en-US&page=1"
       )
       .then((res) => {

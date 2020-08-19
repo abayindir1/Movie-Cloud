@@ -17,7 +17,7 @@ export default function TrendingMovies() {
     axios
       .get(
         "https://api.themoviedb.org/3/trending/movie/day?api_key=" +
-          process.env.REACT_APP_API_KEY
+          REACT_APP_API_KEY
       )
       .then((res) => {
         setMovies(res.data.results);
