@@ -18,7 +18,7 @@
   margin: 2% 0 2% 0;
   border-bottom: 3px solid #303841;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   font-family: 'Viga', sans-serif; 
 }
@@ -150,5 +150,51 @@ iframe {
   100% {
     -webkit-transform: scale(1);
     transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .release-date,
+.movie-overview,
+.movie-average,
+.genres,
+.cast-title,
+.review-title
+{
+  font-size: 1.5rem;
+}
+.movie-title {
+  font-size: 1.6rem;
+}
+
+iframe  {
+  height: 600px;
+}
+}
+
+@media screen and (max-width: 650px) {
+  .release-date,
+  .movie-overview,
+  .movie-average,
+  .genres,
+  .cast-title,
+  .review-title
+  {
+    font-size: 1rem;
+  }
+  .movie-title {
+    font-size: 1.3rem;
+  }
+  
+  iframe  {
+    height: 300px;
+  }
+
+  .review{
+    font-size: 1rem
+  }
+  .review-link {
+    padding: 2%;
+    font-size: 0.8rem;
   }
 }

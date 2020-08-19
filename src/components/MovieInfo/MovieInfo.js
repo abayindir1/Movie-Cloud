@@ -28,7 +28,6 @@ export default function MovieInfo(props) {
   }, [movieId, window.location.pathname]);
 
   var settings = {
-    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 5,
