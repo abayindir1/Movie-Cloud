@@ -19,7 +19,7 @@ export default function SearchMovie() {
     e.preventDefault();
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_API_KEY}&query=${search}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}`
       )
       .then((res) => {
         var items = res.data.results.slice(0, 6).map((item) => {
